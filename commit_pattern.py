@@ -24,8 +24,10 @@ for week in range(len(pattern)):
             date_str = date.strftime('%Y-%m-%d')
             with open('README.md', 'a') as file:
                 file.write(f'Commit on {date_str}\n')
-            subprocess.run(['git', 'add', 'README.md'])
-            subprocess.run(['git', 'commit', '--date', date_str, '-m', f'Commit on {date_str}'])
+            print(f'Adding commit for date: {date_str}')
+            subprocess.run(['git', 'add', 'README.md'], check=True)
+            subprocess.run(['git', 'commit', '--date', date_str, '-m', f'Commit on {date_str}'], check=True)
 
 # Push the commits to the remote repository
-subprocess.run(['git', 'push', 'origin', 'main'])
+print('Pushing commits to the remote repository...')
+subprocess.run(['git', 'push', 'origin', 'main'], check=True)
